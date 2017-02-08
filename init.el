@@ -334,8 +334,8 @@ before packages are loaded. If you are unsure, you should try in setting them in
 ;;显示行号
 (global-linum-mode t)
 
-
-
+(add-to-list 'exec-path "C:/Program Files (x86)/Graphviz2.38/bin/")
+;;(add-to-list 'load-path "~/.spacemacs.d/lisp/")
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
 This function is called at the very end of Spacemacs initialization after

@@ -69,8 +69,8 @@ Each entry is either:
       (require 'org-compat)
       (require 'org)
 	  (setq org-ditaa-jar-path "~/.spacemacs.d/ditaa0_9.jar")
-	  (setq org-plantuml-jar-path "~/.spacemacs.d/plantuml.jar")
-
+	  ;;(setq org-plantuml-jar-path "~/.spacemacs.d/plantuml.jar")
+	  ;;(require 'ob-ditaa)
       (org-babel-do-load-languages
        'org-babel-load-languages
        '((perl . t)

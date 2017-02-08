@@ -30,8 +30,7 @@
 ;;; Code:
 
 (defconst xkwu-packages
-  '(org-pomodoro)
-  '(youdao-dictionary)
+  '(org-jekyll)
   )
   "The list of Lisp packages required by the xkwu layer.
 
@@ -79,7 +78,7 @@ Each entry is either:
          (sh . t)
          (dot . t)
          (js . t)
-         (latex .t)
+         (latex . t)
          (python . t)
          (emacs-lisp . t)
          (plantuml . t)

@@ -63,27 +63,19 @@ Each entry is either:
   (with-eval-after-load 'org
     (progn
       
-      (spacemacs|disable-company org-mode)
-      (spacemacs/set-leader-keys-for-major-mode 'org-mode
-        "," 'org-priority)
-      (require 'org-compat)
-      (require 'org)
-	  (setq org-ditaa-jar-path "~/.spacemacs.d/ditaa0_9.jar")
+    
+
+(org-babel-do-load-languages
+ (quote org-babel-load-languages)
+ (quote ((emacs-lisp . t)
+         (dot . t)
+         (ditaa . t)
+       )))
+  (setq org-ditaa-jar-path "~/.spacemacs.d/ditaa0_9.jar")
 	  (setq org-plantuml-jar-path "~/.spacemacs.d/plantuml.jar")
 
-      (org-babel-do-load-languages
-       'org-babel-load-languages
-       '((perl . t)
-         (ruby . t)
-         (sh . t)
-         (dot . t)
-         (js . t)
-         (latex . t)
-         (python . t)
-         (emacs-lisp . t)
-         (plantuml . t)
-         (C . t)
-         (ditaa . t)))
+
+    
 	)
  )
 )

@@ -32,7 +32,7 @@
 (defconst xkwu-packages
   '(org-jekyll)
   )
-  "The list of Lisp packages required by the xkwu layer.
+"The list of Lisp packages required by the xkwu layer.
 
 Each entry is either:
 
@@ -59,32 +59,61 @@ Each entry is either:
       - A list beginning with the symbol `recipe' is a melpa
         recipe.  See: https://github.com/milkypostman/melpa#recipe-format"
 (defun xkwu/init-org-jekyll()
+  (defun open-xkwu-layer-file()
+    (interactive)
+    (find-file "~/.spacemacs.d/xkwu/packages.el"))
+
+  (global-set-key (kbd "<f3>") 'open-xkwu-layer-file)
   (add-hook 'org-mode-hook (lambda () (spacemacs/toggle-line-numbers-off)) 'append)
   (with-eval-after-load 'org
     (progn
       
-      (spacemacs|disable-company org-mode)
-      (spacemacs/set-leader-keys-for-major-mode 'org-mode
-        "," 'org-priority)
-      (require 'org-compat)
-      (require 'org)
-	  (setq org-ditaa-jar-path "~/.spacemacs.d/ditaa0_9.jar")
-	  ;;(setq org-plantuml-jar-path "~/.spacemacs.d/plantuml.jar")
-	  ;;(require 'ob-ditaa)
+      (setq org-startup-with-inline-images t) 
+      (setq org-startup-indented t)
       (org-babel-do-load-languages
-       'org-babel-load-languages
-       '((perl . t)
-         (ruby . t)
-         (sh . t)
-         (dot . t)
-         (js . t)
-         (latex . t)
-         (python . t)
-         (emacs-lisp . t)
-         (plantuml . t)
-         (C . t)
-         (ditaa . t)))
-	)
- )
-)
+       (quote org-babel-load-languages)
+       (quote ((emacs-lisp . t)
+               (dot . t)
+               (ditaa . t)
+               )))
+      (setq org-confirm-babel-evaluate nil)
+      (setq org-ditaa-jar-path "~/.spacemacs.d/ditaa0_9.jar")
+      (setq org-plantuml-jar-path "~/.spacemacs.d/plantuml.jar")
+
+      
+      (setq org-publish-project-alist
+            '(
+
+              ("org-blog"
+               ;; Path to your org files.
+               :base-directory "~/blog/coldvmoon.github.io/_drafts"
+               :base-extension "org"
+
+               ;; Path to your Jekyll project.
+               :publishing-directory "~/blog/coldvmoon.github.io/_posts"
+               :recursive t
+               :publishing-function org-html-publish-to-html
+               :headline-levels 4 
+               :html-extension "html"
+               :body-only t ;; Only export section between <body> </body>
+               )
+
+
+              ("org-static-blog"
+               :base-directory "~/blog/coldvmoon.github.io/_drafts"
+               :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf\\|php"
+               :publishing-directory "~/blog/coldvmoon.github.io/images"
+               :recursive t
+               :publishing-function org-publish-attachment)
+
+              ("blog" :components ("org-blog" "org-static-blog"))
+
+              
+
+              ))
+
+      
+      )
+    )
+  )
 ;;; packages.el ends here

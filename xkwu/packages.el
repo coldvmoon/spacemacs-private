@@ -93,7 +93,12 @@ Each entry is either:
                :publishing-directory "~/blog/coldvmoon.github.io/_posts"
                :recursive t
                :publishing-function org-html-publish-to-html
-               :headline-levels 4 
+		  :with-toc nil
+          :headline-levels 4 
+          :auto-preamble nil
+          :auto-sitemap nil
+		  :section-numbers t
+		  :table-of-contents nil		  
                :html-extension "html"
                :body-only t ;; Only export section between <body> </body>
                )

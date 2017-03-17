@@ -74,6 +74,7 @@ Each entry is either:
 (setq org-confirm-babel-evaluate nil)
   (setq org-ditaa-jar-path "~/.spacemacs.d/ditaa0_9.jar")
 	  (setq org-plantuml-jar-path "~/.spacemacs.d/plantuml.jar")
+(setq org-link-file-path-type 'relative)
 
 	  
 	  (setq org-publish-project-alist
@@ -107,7 +108,6 @@ Each entry is either:
           :publishing-function org-publish-attachment)
 
     ("blog" :components ("org-blog" "org-static-blog"))
-
 ))
 
     

@@ -32,7 +32,7 @@
 (defconst xkwu-packages
   '(org-jekyll)
   )
-  "The list of Lisp packages required by the xkwu layer.
+"The list of Lisp packages required by the xkwu layer.
 
 Each entry is either:
 
@@ -59,59 +59,67 @@ Each entry is either:
       - A list beginning with the symbol `recipe' is a melpa
         recipe.  See: https://github.com/milkypostman/melpa#recipe-format"
 (defun xkwu/init-org-jekyll()
+  (defun open-xkwu-layer-file()
+    (interactive)
+    (find-file "~/.spacemacs.d/xkwu/packages.el"))
+
+  (global-set-key (kbd "<f3>") 'open-xkwu-layer-file)
   (add-hook 'org-mode-hook (lambda () (spacemacs/toggle-line-numbers-off)) 'append)
   (with-eval-after-load 'org
     (progn
+      (setq  org-link-file-path-type  'relative)
+      (setq org-startup-with-inline-images t) 
+      (setq org-startup-indented t)
+      (org-babel-do-load-languages
+       (quote org-babel-load-languages)
+       (quote ((emacs-lisp . t)
+               (dot . t)
+               (ditaa . t)
+               )))
+      (setq org-confirm-babel-evaluate nil)
+      (setq org-ditaa-jar-path "~/.spacemacs.d/ditaa0_9.jar")
+      (setq org-plantuml-jar-path "~/.spacemacs.d/plantuml.jar")
+
+      (setq-default org-download-image-dir "~/blog/coldvmoon.github.io/images")
+      (setq-default org-download-heading-lvl nil)
+      (setq org-publish-project-alist
+            '(
+
+              ("org-blog"
+               ;; Path to your org files.
+               :base-directory "~/blog/coldvmoon.github.io/_drafts"
+               :base-extension "org"
+
+               ;; Path to your Jekyll project.
+               :publishing-directory "~/blog/coldvmoon.github.io/_posts"
+               :recursive t
+               :publishing-function org-html-publish-to-html
+               :with-toc nil
+               :headline-levels 4 
+               :auto-preamble nil
+               :auto-sitemap nil
+               :section-numbers t
+               :table-of-contents nil		  
+               :html-extension "html"
+               :body-only t ;; Only export section between <body> </body>
+               )
+
+
+              ("org-static-blog"
+               :base-directory "~/blog/coldvmoon.github.io/_drafts"
+               :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf\\|php"
+               :publishing-directory "~/blog/coldvmoon.github.io/images"
+               :recursive t
+               :publishing-function org-publish-attachment)
+
+              ("blog" :components ("org-blog" "org-static-blog"))
+
+              
+
+              ))
+
       
-    
-
-(org-babel-do-load-languages
- (quote org-babel-load-languages)
- (quote ((emacs-lisp . t)
-         (dot . t)
-         (ditaa . t)
-       )))
-(setq org-confirm-babel-evaluate nil)
-  (setq org-ditaa-jar-path "~/.spacemacs.d/ditaa0_9.jar")
-	  (setq org-plantuml-jar-path "~/.spacemacs.d/plantuml.jar")
-(setq org-link-file-path-type 'relative)
-
-	  
-	  (setq org-publish-project-alist
-      '(
-
-  ("org-blog"
-          ;; Path to your org files.
-          :base-directory "~/blog/coldvmoon.github.io/_drafts"
-          :base-extension "org"
-
-          ;; Path to your Jekyll project.
-          :publishing-directory "~/blog/coldvmoon.github.io/_posts"
-          :recursive t
-          :publishing-function org-html-publish-to-html
-		  :with-toc nil
-          :headline-levels 4
-          :auto-preamble nil
-          :auto-sitemap nil
-		  :section-numbers t
-		  :table-of-contents nil		  
-          :html-extension "html"
-          :body-only t ;; Only export section between <body> </body>
+      )
     )
-
-
-    ("org-static-blog"
-          :base-directory "~/blog/coldvmoon.github.io/_drafts"
-          :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf\\|php"
-          :publishing-directory "~/blog/coldvmoon.github.io/images"
-          :recursive t
-          :publishing-function org-publish-attachment)
-
-    ("blog" :components ("org-blog" "org-static-blog"))
-))
-
-    
-	)
- )
-)
+  )
 ;;; packages.el ends here

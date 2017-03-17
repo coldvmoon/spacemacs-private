@@ -67,7 +67,7 @@ Each entry is either:
   (add-hook 'org-mode-hook (lambda () (spacemacs/toggle-line-numbers-off)) 'append)
   (with-eval-after-load 'org
     (progn
-      
+      (setq  org-link-file-path-type  'relative)
       (setq org-startup-with-inline-images t) 
       (setq org-startup-indented t)
       (org-babel-do-load-languages
@@ -80,7 +80,8 @@ Each entry is either:
       (setq org-ditaa-jar-path "~/.spacemacs.d/ditaa0_9.jar")
       (setq org-plantuml-jar-path "~/.spacemacs.d/plantuml.jar")
 
-      
+      (setq-default org-download-image-dir "~/blog/coldvmoon.github.io/images")
+      (setq-default org-download-heading-lvl nil)
       (setq org-publish-project-alist
             '(
 
@@ -93,12 +94,12 @@ Each entry is either:
                :publishing-directory "~/blog/coldvmoon.github.io/_posts"
                :recursive t
                :publishing-function org-html-publish-to-html
-		  :with-toc nil
-          :headline-levels 4 
-          :auto-preamble nil
-          :auto-sitemap nil
-		  :section-numbers t
-		  :table-of-contents nil		  
+               :with-toc nil
+               :headline-levels 4 
+               :auto-preamble nil
+               :auto-sitemap nil
+               :section-numbers t
+               :table-of-contents nil		  
                :html-extension "html"
                :body-only t ;; Only export section between <body> </body>
                )

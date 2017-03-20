@@ -62,10 +62,11 @@ Each entry is either:
   (defun open-xkwu-layer-file()
     (interactive)
     (find-file "~/.spacemacs.d/xkwu/packages.el"))
-  (add-hook 'text-mode-hook (lambda () (toggle-truncate-lines nil)))
   (global-set-key (kbd "<f3>") 'open-xkwu-layer-file)
   (with-eval-after-load 'org
     (progn
+      (setq org-startup-truncated nil)
+      (setq org-tags-column 0)
       (global-visual-line-mode t)
       (setq  org-link-file-path-type  'relative)
       (setq org-startup-with-inline-images t) 

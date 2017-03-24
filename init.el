@@ -186,7 +186,7 @@ values."
    dotspacemacs-display-default-layout nil
    ;; If non nil then the last auto saved layouts are resume automatically upon
    ;; start. (default nil)
-   dotspacemacs-auto-resume-layouts nil
+   dotspacemacs-auto-resume-layouts nil 
    ;; Size (in MB) above which spacemacs will prompt to open the large file
    ;; literally to avoid performance issues. Opening a file literally means that
    ;; no major mode or minor modes are active. (default is 1)
@@ -315,9 +315,15 @@ before packages are loaded. If you are unsure, you should try in setting them in
 ;; 这一行代码，将函数 open-init-file 绑定到 <f2> 键上
 (global-set-key (kbd "<f2>") 'open-init-file)
 
+
 ;;Emacs 自动加载外部修改过的文件
 (global-auto-revert-mode 1)
 
+;;关闭自动保存文件
+(setq auto-save-default nil)
+
+;;关闭自动备份文件
+(setq make-backup-files nil)
 
 ;;popwin 插件可以自动将光标移动到，新创建的窗口中
 ;;(require 'popwin)

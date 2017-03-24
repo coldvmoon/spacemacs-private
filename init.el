@@ -45,6 +45,7 @@ values."
      markdown
      (org :variables
           org-enable-reveal-js-support t
+          org-projectile-file "TODOs.org"
           )
      ;; (shell :variables
      ;;        shell-default-height 30
@@ -323,12 +324,6 @@ before packages are loaded. If you are unsure, you should try in setting them in
 ;;(require 'popwin)
 ;;(popwin-mode 1)
 
-;;capture 的配置
-(setq org-capture-templates
-      '(("t" "Todo" entry (file+headline "~/.spacemacs.d/gtd.org" "工作安排")
-         "* TODO [#B] %?\n  %i\n"
-         :empty-lines 1)))
-(setq org-agenda-files '("~/.spacemacs.d"))
 
 
 ;;代码块高亮

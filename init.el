@@ -313,7 +313,7 @@ before packages are loaded. If you are unsure, you should try in setting them in
           ("gnu-cn"   . "http://elpa.emacs-china.org/gnu/")))
   )
 
-(setq deft-directory "~/blog/coldvmoon.github.io/_drafts")
+(setq deft-directory "~/blog/coldvmoon.github.io/org")
 ;;禁止 Emacs 自动生成备份文件
 (setq make-backup-files nil)
 

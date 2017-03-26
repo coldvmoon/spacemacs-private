@@ -64,12 +64,12 @@ Each entry is either:
     (find-file "~/.spacemacs.d/xkwu/packages.el"))
   (global-set-key (kbd "<f3>") 'open-xkwu-layer-file)
   (global-set-key "\C-cb" 'org-iswitchb)
-
+  (setq org-agenda-include-diary t)
   ;;capture 的配置
   (setq org-capture-templates
         '(("t" "Todo" entry (file+headline "~/blog/coldvmoon.github.io/org/gtd.org" "工作安排")
            "* TODO [#B] %?\n  %i\n"
-           :empty-lines 1)))
+          :empty-lines 1)))
   (setq org-agenda-files '("~/blog/coldvmoon.github.io/org"))
   (with-eval-after-load 'org
     (progn

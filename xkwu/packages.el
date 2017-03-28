@@ -70,8 +70,10 @@ Each entry is either:
 (global-set-key (kbd "<f4>") 'open-spacemacs-org)
 
 
-  (global-set-key "\C-cb" 'org-iswitchb)
-  (setq org-agenda-include-diary t)
+(global-set-key "\C-cb" 'org-iswitchb)
+
+;; config with agenda
+(setq org-agenda-span 'day)
   ;;capture 的配置
   (setq org-capture-templates
         '(("t" "Todo" entry (file+headline "~/blog/coldvmoon.github.io/org/gtd.org" "工作安排")
@@ -88,18 +90,22 @@ Each entry is either:
       (setq org-startup-indented t)
 
       (setq org-log-done 'note)
+
+      (setq org-confirm-babel-evaluate nil)
+      (setq org-ditaa-jar-path "~/.spacemacs.d/ditaa0_9.jar")
+      (setq org-plantuml-jar-path "~/.spacemacs.d/plantuml.jar")
+
       (org-babel-do-load-languages
        (quote org-babel-load-languages)
        (quote ((emacs-lisp . t)
                (dot . t)
                (ditaa . t)
+               (plantuml . t)
                )))
-      (setq org-confirm-babel-evaluate nil)
-      (setq org-ditaa-jar-path "~/.spacemacs.d/ditaa0_9.jar")
-      (setq org-plantuml-jar-path "~/.spacemacs.d/plantuml.jar")
-
       (setq-default org-download-image-dir "~/blog/coldvmoon.github.io/images")
       (setq-default org-download-heading-lvl nil)
+
+
       (setq org-publish-project-alist
             '(
 

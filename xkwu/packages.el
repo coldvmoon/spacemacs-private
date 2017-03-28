@@ -67,18 +67,20 @@ Each entry is either:
   (defun open-spacemacs-org()
     (interactive)
     (find-file "~/blog/coldvmoon.github.io/org/2017-03-19-spacemacs.org"))
-(global-set-key (kbd "<f4>") 'open-spacemacs-org)
+  (global-set-key (kbd "<f4>") 'open-spacemacs-org)
 
 
-(global-set-key "\C-cb" 'org-iswitchb)
+  (global-set-key "\C-cb" 'org-iswitchb)
 
-;; config with agenda
-(setq org-agenda-span 'day)
+  (add-hook 'org-babel-after-execute-hook 'bh/display-inline-images 'append)
+  
+  ;; config with agenda
+  (setq org-agenda-span 'day)
   ;;capture 的配置
   (setq org-capture-templates
         '(("t" "Todo" entry (file+headline "~/blog/coldvmoon.github.io/org/gtd.org" "工作安排")
            "* TODO [#B] %?\n  %i\n"
-          :empty-lines 1)))
+           :empty-lines 1)))
   (setq org-agenda-files '("~/blog/coldvmoon.github.io/org/agenda"))
   (with-eval-after-load 'org
     (progn
@@ -92,18 +94,18 @@ Each entry is either:
       (setq org-log-done 'note)
 
       (setq org-confirm-babel-evaluate nil)
-      (setq org-ditaa-jar-path "~/.spacemacs.d/ditaa0_9.jar")
-      (setq org-plantuml-jar-path "~/.spacemacs.d/plantuml.jar")
+      ;;     (setq org-ditaa-jar-path "~/.spacemacs.d/ditaa0_9.jar")
+      ;;     (setq org-plantuml-jar-path "~/.spacemacs.d/plantuml.jar")
 
-      (org-babel-do-load-languages
-       (quote org-babel-load-languages)
-       (quote ((emacs-lisp . t)
-               (dot . t)
-               (ditaa . t)
-               (plantuml . t)
-               )))
-      (setq-default org-download-image-dir "~/blog/coldvmoon.github.io/images")
-      (setq-default org-download-heading-lvl nil)
+      ;;     (org-babel-do-load-languages
+      ;;     (quote org-babel-load-languages)
+      ;;     (quote ((emacs-lisp . t)
+      ;;            (dot . t)
+      ;;            (ditaa . t)
+      ;;            (plantuml . t)
+      ;;           )))
+      ;;   (setq-default org-download-image-dir "~/blog/coldvmoon.github.io/images")
+      ;;   (setq-default org-download-heading-lvl nil)
 
 
       (setq org-publish-project-alist

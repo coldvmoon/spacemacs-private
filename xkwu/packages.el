@@ -78,7 +78,7 @@ Each entry is either:
   (setq org-agenda-span 'day)
   ;;capture 的配置
   (setq org-capture-templates
-        '(("t" "Todo" entry (file+headline "~/blog/coldvmoon.github.io/org/gtd.org" "工作安排")
+        '(("t" "Todo" entry (file+headline "~/blog/coldvmoon.github.io/org/agenda/work.org" "工作安排")
            "* TODO [#B] %?\n  %i\n"
            :empty-lines 1)))
   (setq org-agenda-files '("~/blog/coldvmoon.github.io/org/agenda"))

@@ -72,7 +72,7 @@ Each entry is either:
 
   (global-set-key "\C-cb" 'org-iswitchb)
 
-  (add-hook 'org-babel-after-execute-hook 'bh/display-inline-images 'append)
+  ;;(add-hook 'org-babel-after-execute-hook 'bh/display-inline-images 'append)
   
   ;; config with agenda
   (setq org-agenda-span 'day)
@@ -94,18 +94,18 @@ Each entry is either:
       (setq org-log-done 'note)
 
       (setq org-confirm-babel-evaluate nil)
-      ;;     (setq org-ditaa-jar-path "~/.spacemacs.d/ditaa0_9.jar")
-      ;;     (setq org-plantuml-jar-path "~/.spacemacs.d/plantuml.jar")
+           (setq org-ditaa-jar-path "~/.spacemacs.d/ditaa0_9.jar")
+           (setq org-plantuml-jar-path "~/.spacemacs.d/plantuml.jar")
 
-      ;;     (org-babel-do-load-languages
-      ;;     (quote org-babel-load-languages)
-      ;;     (quote ((emacs-lisp . t)
-      ;;            (dot . t)
-      ;;            (ditaa . t)
-      ;;            (plantuml . t)
-      ;;           )))
-      ;;   (setq-default org-download-image-dir "~/blog/coldvmoon.github.io/images")
-      ;;   (setq-default org-download-heading-lvl nil)
+           (org-babel-do-load-languages
+           (quote org-babel-load-languages)
+           (quote ((emacs-lisp . t)
+                  (dot . t)
+                  (ditaa . t)
+                  (plantuml . t)
+                 )))
+         (setq-default org-download-image-dir "~/blog/coldvmoon.github.io/images")
+         (setq-default org-download-heading-lvl nil)
 
 
       (setq org-publish-project-alist

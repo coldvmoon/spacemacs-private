@@ -72,6 +72,15 @@ Each entry is either:
 
   (global-set-key "\C-cb" 'org-iswitchb)
 
+
+  (require 'ox-latex)
+  (add-to-list 'org-latex-packages-alist '("" "minted"))
+  (setq org-latex-listings 'minted)
+                                        ; 使用xelatex一步生成PDF
+  (setq org-latex-pdf-process
+        '("pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
+          "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
+          "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
   ;;(add-hook 'org-babel-after-execute-hook 'bh/display-inline-images 'append)
   
   ;; config with agenda
@@ -113,7 +122,7 @@ Each entry is either:
 
               ("org-blog"
                ;; Path to your org files.
-               :base-directory "~/blog/coldvmoon.github.io/_drafts"
+               :base-directory "~/blog/coldvmoon.github.io/org"
                :base-extension "org"
 
                ;; Path to your Jekyll project.

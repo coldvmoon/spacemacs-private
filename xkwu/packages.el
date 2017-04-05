@@ -72,6 +72,18 @@ Each entry is either:
 
   (global-set-key "\C-cb" 'org-iswitchb)
 
+  ;; 80 colums for wrapping
+  (setq-default fill-column 80)
+  ;; Hard-wrap at 80 columns on for _everything_
+  (setq-default auto-fill-function 'do-auto-fill)
+
+  ;; Soft-wrap (visual wrap) always for long lines that don't fit on the screen
+;;  (global-visual-line-mode 1)
+
+  ;; Ensure that soft-wrap uses markers to show a line was wrapped
+  ;;(setq-default visual-line-fringe-indicators
+    ;;            '(left-curly-arrow right-curly-arrow))
+
 
   (require 'ox-latex)
   (add-to-list 'org-latex-packages-alist '("" "minted"))
@@ -93,9 +105,13 @@ Each entry is either:
   (setq org-agenda-files '("~/blog/coldvmoon.github.io/org/agenda"))
   (with-eval-after-load 'org
     (progn
-      (setq org-startup-truncated nil)
+      ;;(setq org-startup-truncated nil)
       (setq org-tags-column 0)
-      (global-visual-line-mode t)
+      ;;自动换行
+      ;;(global-visual-line-mode t)
+
+
+            
       (setq  org-link-file-path-type  'relative)
       (setq org-startup-with-inline-images t) 
       (setq org-startup-indented t)

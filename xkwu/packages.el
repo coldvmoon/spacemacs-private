@@ -78,11 +78,11 @@ Each entry is either:
   (setq-default auto-fill-function 'do-auto-fill)
 
   ;; Soft-wrap (visual wrap) always for long lines that don't fit on the screen
-;;  (global-visual-line-mode 1)
+  ;;  (global-visual-line-mode 1)
 
   ;; Ensure that soft-wrap uses markers to show a line was wrapped
   ;;(setq-default visual-line-fringe-indicators
-    ;;            '(left-curly-arrow right-curly-arrow))
+  ;;            '(left-curly-arrow right-curly-arrow))
 
 
   (require 'ox-latex)
@@ -93,6 +93,16 @@ Each entry is either:
         '("pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
           "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
           "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
+  (unless (boundp 'org-latex-classes)
+    (setq org-latex-classes nil))
+  (add-to-list 'org-latex-classes
+               '("cn-article"
+                 "\\documentclass[10pt,a4paper]{article}
+                  \\usepackage[text={180mm,250mm},centering]{geometry}
+
+"))
+
+
   ;;(add-hook 'org-babel-after-execute-hook 'bh/display-inline-images 'append)
   
   ;; config with agenda
@@ -105,13 +115,13 @@ Each entry is either:
   (setq org-agenda-files '("~/blog/coldvmoon.github.io/org/agenda"))
   (with-eval-after-load 'org
     (progn
-      ;;(setq org-startup-truncated nil)
+      (setq org-startup-truncated nil)
       (setq org-tags-column 0)
       ;;自动换行
-      ;;(global-visual-line-mode t)
+      (global-visual-line-mode t)
 
 
-            
+      
       (setq  org-link-file-path-type  'relative)
       (setq org-startup-with-inline-images t) 
       (setq org-startup-indented t)
@@ -119,18 +129,18 @@ Each entry is either:
       (setq org-log-done 'note)
 
       (setq org-confirm-babel-evaluate nil)
-           (setq org-ditaa-jar-path "~/.spacemacs.d/ditaa0_9.jar")
-           (setq org-plantuml-jar-path "~/.spacemacs.d/plantuml.jar")
+      (setq org-ditaa-jar-path "~/.spacemacs.d/ditaa0_9.jar")
+      (setq org-plantuml-jar-path "~/.spacemacs.d/plantuml.jar")
 
-           (org-babel-do-load-languages
-           (quote org-babel-load-languages)
-           (quote ((emacs-lisp . t)
-                  (dot . t)
-                  (ditaa . t)
-                  (plantuml . t)
-                 )))
-         (setq-default org-download-image-dir "~/blog/coldvmoon.github.io/images")
-         (setq-default org-download-heading-lvl nil)
+      (org-babel-do-load-languages
+       (quote org-babel-load-languages)
+       (quote ((emacs-lisp . t)
+               (dot . t)
+               (ditaa . t)
+               (plantuml . t)
+               )))
+      (setq-default org-download-image-dir "~/blog/coldvmoon.github.io/images")
+      (setq-default org-download-heading-lvl nil)
 
 
       (setq org-publish-project-alist

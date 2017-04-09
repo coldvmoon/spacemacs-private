@@ -316,6 +316,7 @@ before packages are loaded. If you are unsure, you should try in setting them in
   )
 
 (setq deft-directory "~/blog/coldvmoon.github.io/org")
+(setq deft-recursive t)
 ;;禁止 Emacs 自动生成备份文件
 (setq make-backup-files nil)
 

@@ -29,35 +29,6 @@
 
 ;;; Code:
 
-(defconst xkwu-packages
-  '(org-jekyll)
-  )
-"The list of Lisp packages required by the xkwu layer.
-
-Each entry is either:
-
-1. A symbol, which is interpreted as a package to be installed, or
-
-2. particularA list of the form (PACKAGE KEYS...), where PACKAGE is the
-    name of the package to be installed or loaded, and KEYS are
-    any number of keyword-value-pairs.
-
-    The following keys are accepted:
-
-    - :excluded (t or nil): Prevent the package from being loaded
-      if value is non-nil
-
-    - :location: Specify a custom installation location.
-      The following values are legal:
-
-      - The symbol `elpa' (default) means PACKAGE will be
-        installed using the Emacs package manager.
-
-      - The symbol `local' directs Spacemacs to load the file at
-        `./local/PACKAGE/PACKAGE.el'
-
-      - A list beginning with the symbol `recipe' is a melpa
-        recipe.  See: https://github.com/milkypostman/melpa#recipe-format"
 (defun xkwu/init-org-jekyll()
   (defun open-xkwu-layer-file()
     (interactive)
@@ -84,7 +55,11 @@ Each entry is either:
   ;;(setq-default visual-line-fringe-indicators
   ;;            '(left-curly-arrow right-curly-arrow))
 
-
+  (with-eval-after-load 'neotree
+    (add-hook 'neotree-mode-hook 
+             (lambda () (with-current-buffer " *NeoTree*"
+                          (visual-line-mode  -1)))))
+  ;;(setq neo-theme (if (display-graphic-p) 'icons 'arrow))
   (require 'ox-latex)
   (add-to-list 'org-latex-packages-alist '("" "minted"))
   (setq org-latex-listings 'minted)
@@ -183,4 +158,33 @@ Each entry is either:
       )
     )
   )
+(defconst xkwu-packages
+  '(org-jekyll)
+  )
+"The list of Lisp packages required by the xkwu layer.
+
+Each entry is either:
+
+1. A symbol, which is interpreted as a package to be installed, or
+
+2. particularA list of the form (PACKAGE KEYS...), where PACKAGE is the
+    name of the package to be installed or loaded, and KEYS are
+    any number of keyword-value-pairs.
+
+    The following keys are accepted:
+
+    - :excluded (t or nil): Prevent the package from being loaded
+      if value is non-nil
+
+    - :location: Specify a custom installation location.
+      The following values are legal:
+
+      - The symbol `elpa' (default) means PACKAGE will be
+        installed using the Emacs package manager.
+
+      - The symbol `local' directs Spacemacs to load the file at
+        `./local/PACKAGE/PACKAGE.el'
+
+      - A list beginning with the symbol `recipe' is a melpa
+        recipe.  See: https://github.com/milkypostman/melpa#recipe-format"
 ;;; packages.el ends here

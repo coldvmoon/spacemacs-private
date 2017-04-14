@@ -60,6 +60,14 @@
              (lambda () (with-current-buffer " *NeoTree*"
                           (visual-line-mode  -1)))))
   ;;(setq neo-theme (if (display-graphic-p) 'icons 'arrow))
+
+
+;;  (require 'chinese-fonts-setup)
+  ;; 让 chinese-fonts-setup 随着 emacs 自动生效。
+;;   (chinese-fonts-setup-enable)
+  ;; 让 spacemacs mode-line 中的 Unicode 图标正确显示。
+  ;; (cfs-set-spacemacs-fallback-fonts)
+
   (require 'ox-latex)
   (add-to-list 'org-latex-packages-alist '("" "minted"))
   (setq org-latex-listings 'minted)

@@ -42,11 +42,11 @@
 
 
   (global-set-key "\C-cb" 'org-iswitchb)
-
+  (setq org-directory "~/blog/coldvmoon.github.io/org")  
   ;; 80 colums for wrapping
   (setq-default fill-column 80)
   ;; Hard-wrap at 80 columns on for _everything_
-  (setq-default auto-fill-function 'do-auto-fill)
+  ;;(setq-default auto-fill-function 'do-auto-fill)
 
   ;; Soft-wrap (visual wrap) always for long lines that don't fit on the screen
   ;;  (global-visual-line-mode 1)
